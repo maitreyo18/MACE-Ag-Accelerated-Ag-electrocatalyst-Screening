@@ -11,9 +11,9 @@ checkpoints_dir: "MACE_models_scratch"
 results_dir: "MACE_models_scratch"
 
 # Use your actual data files
-train_file: "/depot/amannodi/data/Maitreyo_calcs/Ag-alloy_RPBE/Final_datasets_3_4/Combined_slab+O+OH+1_3_ML/train+val_MACE.xyz"
+train_file: "./train+val_MACE.xyz"
 valid_fraction: 0.10
-test_file: "/depot/amannodi/data/Maitreyo_calcs/Ag-alloy_RPBE/Final_datasets_3_4/Combined_slab+O+OH+1_3_ML/test_MACE.xyz"
+test_file: "./test_MACE.xyz"
 
 # Update keys to match your actual XYZ file
 energy_key: "energy_pbe"
