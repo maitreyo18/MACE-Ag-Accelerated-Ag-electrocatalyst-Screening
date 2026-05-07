@@ -1,0 +1,54 @@
+model: "MACE"
+stress_weight: 0.00
+forces_weight: 100.0
+energy_weight: 10.0
+#foundation_model: "small"
+#multiheads_finetuning: False
+name: "MACE_alloy+adsorb"
+model_dir: "MACE_models_scratch"
+log_dir: "MACE_models_scratch"
+checkpoints_dir: "MACE_models_scratch"
+results_dir: "MACE_models_scratch"
+
+# Use your actual data files
+train_file: "/depot/amannodi/data/Maitreyo_calcs/Ag-alloy_RPBE/Final_datasets_3_4/Combined_slab+O+OH+1_3_ML/train+val_MACE.xyz"
+valid_fraction: 0.10
+test_file: "/depot/amannodi/data/Maitreyo_calcs/Ag-alloy_RPBE/Final_datasets_3_4/Combined_slab+O+OH+1_3_ML/test_MACE.xyz"
+
+# Update keys to match your actual XYZ file
+energy_key: "energy_pbe"
+forces_key: "forces_pbe"
+stress_key: "stress_pbe"
+hidden_irreps: "128x0e + 128x1o"
+E0s: {47: -2.18598125, 79: -2.623971, 83: -3.446913, 29: -3.24873475, 8: -1.758624, 46: -4.62998325, 50: -3.32096925, 1: -3.492632}
+#E0s: "average"
+distance_transform: "Agnesi"
+
+pair_repulsion: True # Added ZBL
+
+device: cuda
+batch_size: 12
+max_num_epochs: 280
+#num_samples_pt: 300
+swa: True
+seed: 345
+
+# Learning rate and optimizer parameters
+lr: 0.005                    # Learning rate
+optimizer: "adam"            # Adam optimizer
+beta: 0.9                    # β1 parameter for Adam
+amsgrad: True                # Enable AMSGrad variant
+
+# Exponential Moving Average (EMA) scheduler
+ema: True                    # Enable EMA
+ema_decay: 0.995            # EMA decay factor
+
+# Gradient clipping
+clip_grad: 20.0            # Gradient clipping (correct MACE parameter)
+
+# Learning rate scheduler (using MACE defaults)
+scheduler: "ExponentialLR"  # Use ExponentialLR to control decay
+lr_scheduler_gamma: 0.995 
+#scheduler: "ReduceLROnPlateau"  # Default scheduler
+#lr_factor: 0.8                  # Default: multiply LR by 0.8
+#scheduler_patience: 40          # Default: wait 50 epochs before reducing LR
