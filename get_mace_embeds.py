@@ -17,7 +17,7 @@ from mace.tools import utils as mace_utils
 from mace.tools import torch_geometric
 
 # ── CONFIG ──────────────────────────────────────────────────────────
-MODEL_PATH = "/depot/amannodi/data/Maitreyo_calcs/Ag-alloy_RPBE/MLIPs/1_3_ML/MACE_ZBL/MACE_models_scratch/MACE_alloy+adsorb_stagetwo_compiled.model"  # <-- put your model path here
+MODEL_PATH = "./MACE_alloy+adsorb_stagetwo_compiled.model"  # <-- put your model path here
 STRUCTS_DIR = Path("./structs")
 OUTPUT_PATH = Path("./mace_embeds.pt")
 DEVICE = "cuda"
